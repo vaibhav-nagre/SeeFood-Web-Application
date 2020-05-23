@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/assets/css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="/assets/css/index.css" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>See Food App</title>
+  </head>
+
+  <body>
+    <!-- Hero -->
+    <div class="jumbotron">
+      <!-- Navbar -->
+      <div class="navbar navbar-expand-lg">
+        <div class="container">
+          <div>
+            <h1 class="display-1 is-restaurant-name t-red"></h1>
+            <span class="text-muted is-restaurant-address"></span>
+          </div>
+
+          <a class="navbar-brand" href="/">
+            <img
+              src="/assets/images/logo.png"
+              title="See Food App"
+              width="100px"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="gallery container">
+      <div class="mb-5 text-center">
+        <h2 class="font-martel t-red">Menu Items</h2>
+        <span class="text-muted">Explore menu from the restaurant.</span>
+      </div>
+
+      <div class="is-items-loading text-center mt-3 mb-5">
+        <img src="/assets/images/loader.gif" width="60" />
+      </div>
+
+      <div class="row menu-items"></div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer mt-5 pt-5 pb-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-4">
+            <img src="/assets/images/logo.png" width="100px" />
+            <p class="mt-4">
+              SEEFOOD takes advantage of the newest technologies to deliver
+              restaurant content straight to your mobile cell phone.
+            </p>
+          </div>
+
+          <div class="col-12 col-md-4">
+            <p>Roberto Guerrero</p>
+            <a href="tel:831-682-4586" title="Call us on 831-682-4586"
+              >831-682-4586</a
+            >
+            <br />
+            <a
+              href="mailto:roberto@seefoodapp.com"
+              title="Shot us mail on roberto@seefoodapp.com"
+            >
+              roberto@seefoodapp.com
+            </a>
+          </div>
+
+          <div class="col-12 col-md-4">
+            <a href="#" title="See Food App Home">Home</a>
+            <br />
+            <a href="#" title="About us">About</a>
+            <br />
+            <a href="#" title="Our Restaurants">Restaurants </a>
+            <br />
+            <a href="#" title="Contact Us">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+    <script>
+      $(function () {
+        $(document).on("click", '[data-toggle="lightbox"]', function (event) {
+          event.preventDefault();
+          $(this).ekkoLightbox();
+        });
+
+        let url = $(location).attr("href"),
+          parts = url.split("/"),
+          last_part = parts[parts.length - 1];
+
+        if (last_part) {
+          $(".is-items-loading").show();
+
+          $.getJSON(`/api/restaurants/${last_part}`, function (items) {
+            if (!items[0].length && !items[1].length) {
+              if (
+                window.confirm("Restaurant doesn't exist. Please search again!")
+              ) {
+                window.location.href = "/";
+              }
+            } else {
+              if (items[1] && items[1].length) {
+                $(".is-restaurant-name").append(items[1][0].name);
+
+                $(".is-restaurant-address").append(
+                  items[1][0].address +
+                    ", " +
+                    items[1][0].city +
+                    " (" +
+                    items[1][0].postal_code +
+                    ")"
+                );
+              }
+
+              if (items[0] && items[0].length) {
+                $(".menu-items").html("");
+                items[0].map((item) => {
+                  $(".menu-items").append(
+                    `
+                        <div class="col-12 col-md-6 col-lg-4 mb-5">
+                            <div class="card ml-3 mr-3">
+                                <a href="/assets/images/menu_items/${item.image}" data-toggle="lightbox">
+                                    <img
+                                        class="card-img-top"
+                                        src="/assets/images/menu_items/${item.image}"
+                                        alt="Card image cap"
+                                    />
+                                </a>
+
+                                    <div class="card-footer">
+                                        <h4>
+                                            ${item.name}
+                                            -
+                                            <span class="badge badge-primary" style="background-color: #f20202">
+                                                $${item.price}
+                                            </span>
+                                        </h4>
+
+                                        <p class="mb-0 text-muted">${item.description}</p>
+                                    </div>
+                            </div>
+                        </div>
+                        `
+                  );
+                });
+              } else {
+                $(".menu-items").append(`
+                    <div class="text-center col-12">
+                        <p>Restaurant doesn't have any items.</p>
+                    </div>
+                `);
+              }
+            }
+
+            $(".is-items-loading").hide();
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
