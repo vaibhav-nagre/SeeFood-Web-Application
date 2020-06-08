@@ -1,0 +1,375 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+/* Typography */
+.font-martel {
+  /* font-family: "Kaushan Script", cursive; */
+  font-family: "Libre Baskerville", serif;
+}
+
+.title {
+  /* text-align: center; */
+}
+
+#gallery {
+  text-align: center;
+}
+
+h1 {
+  font-size: 50px;
+  line-height: 1.3;
+  margin-top: -10%;
+}
+h2 {
+  font-size: 42px;
+}
+p {
+  font-size: 18px;
+  line-height: 1.7;
+}
+.t-red {
+  color: #f20202;
+}
+/* Header  */
+.navbar {
+  justify-content: space-between;
+  color: #fff;
+  background: transparent;
+  margin-bottom: 100px;
+}
+.navbar a {
+  color: #fff;
+}
+
+.nav-item {
+  padding-left: 15px;
+}
+
+/* .navbar-brand {
+  margin-left: 100%;
+} */
+
+/* Hero  */
+.hero {
+  background-image: url("../images/1.jpg ");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  height: 100vh;
+  color: #fff;
+}
+
+.hero .overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100%;
+}
+
+.hero .overlay .row {
+  height: 100%;
+}
+/* autocomplete */
+.restaurant-search input {
+  height: 60px;
+  padding-left: 20px;
+  border-radius: 5px;
+}
+
+label {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  opacity: 1;
+  transition: all 0.4s;
+  font-family: "Lobster";
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: #eee;
+  margin-bottom: 5%;
+}
+
+input:placeholder-shown + label {
+  top: 12px;
+  left: 12px;
+  opacity: 0;
+}
+.ui-menu {
+  background-color: #fff;
+  padding: 10px 20px;
+  width: auto;
+  max-width: 400px;
+  overflow: hidden;
+  border: 1px solid #eee;
+}
+.ui-menu .ui-menu-item {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+  list-style: none;
+  cursor: pointer;
+}
+.ui-menu .ui-menu-item:last-of-type {
+  border-bottom: none;
+}
+.ui-menu .ui-menu-item .list-item {
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* about */
+.about {
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
+
+.about img {
+  border-radius: 12px;
+  height: 350px;
+  width: 500px;
+}
+/* popular */
+.popular {
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
+.popular img {
+  border-radius: 12px;
+  height: 350px;
+  width: 550px;
+}
+
+.para {
+  color: #000000;
+  font-family: "Arimo", sans-serif;
+  font-size: 19px;
+}
+/* overview */
+.overview {
+  background-color: #f20202;
+  color: #fff;
+}
+.overview p {
+  font-size: 26px;
+}
+.navbar-inner {
+  background: transparent;
+}
+.imghover:hover {
+  transform: scale(0.9);
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+/* Gallery  */
+.gallery {
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
+
+.gallery-img {
+  width: 1000px;
+  height: 600px;
+}
+/* Story */
+/* .our-story {
+  background-image: url("../images/6.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.our-story .overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+} */
+
+.book-cover {
+  position: relative;
+  margin-left: 45%;
+  padding-top: 730px;
+}
+
+.cover-bg {
+  background-image: url("../images/cover2.jpg ");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  height: 100vh;
+}
+
+.story {
+  background-color: rgb(179, 5, 5);
+  width: 400px;
+  height: 600px;
+  perspective: 2000px;
+  cursor: pointer;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  /* for entering the container */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.img,
+.details {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 20px;
+  transition: all 0.7s;
+}
+
+.img-front,
+.img-back {
+  position: absolute;
+  backface-visibility: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.img {
+  transform-origin: left;
+  transform-style: preserve-3d;
+}
+
+.img-front img {
+  width: 100%;
+  height: 100%;
+}
+
+.img-back {
+  background-color: black;
+  transform: rotateY(180deg);
+  opacity: 0.7;
+}
+
+.details {
+  z-index: -1;
+  background-color: #da4747;
+}
+
+.details img {
+  height: 600px;
+  width: 400px;
+}
+
+.container:hover .img {
+  transform: rotateY(-130deg);
+}
+/* Footer  */
+.footer {
+  background-color: black;
+  color: white;
+}
+.footer a {
+  color: white;
+}
+
+.fotr {
+  margin-left: 33%;
+}
+
+/* typewriter effect */
+
+.typewriter {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  text-transform: capitalize;
+  white-space: nowrap;
+  color: transparent;
+}
+
+p.typewriter::before {
+  content: "  Follow us on: ";
+  position: absolute;
+  padding-left: 15%;
+  padding-top: 6%;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  color: whitesmoke;
+  overflow: hidden;
+  /* border-right: 3px solid white; */
+  animation: typeIt 8s steps(25) infinite;
+}
+
+@keyframes typeIt {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+/* Contact Page */
+
+.hero-contact {
+  background-color: #4062bb;
+  background-image: linear-gradient(316deg, #4062bb 0%, #5200ae 74%);
+
+  /* background-image: url("../images/1.jpg "); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  height: 100vh;
+  color: #fff;
+}
+
+.facebook {
+  padding: 0px;
+
+  width: 43px;
+
+  text-decoration: none;
+
+  color: white;
+}
+
+.facebook: hover {
+  background: #ffc107;
+
+  cursor: pointer;
+}
+
+.instagram {
+  padding: 0px;
+
+  width: 40px;
+
+  text-decoration: none;
+
+  color: white;
+}
+
+.instagram: hover {
+  background: #ffc107;
+
+  cursor: pointer;
+}
+
+.twitter {
+  padding: 0px;
+
+  width: 40px;
+
+  text-decoration: none;
+
+  color: white;
+}
+
+.twitter: hover {
+  background: #ffc107;
+
+  cursor: pointer;
+}
+
+#footer {
+  padding-top: 22%;
+
+  padding-left: 6.5%;
+}
