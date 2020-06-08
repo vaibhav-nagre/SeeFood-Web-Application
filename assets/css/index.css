@@ -124,8 +124,8 @@ input:placeholder-shown + label {
 
 .about img {
   border-radius: 12px;
-  height: 350px;
-  width: 500px;
+  height: 320px;
+  width: 460px;
 }
 /* popular */
 .popular {
@@ -134,8 +134,8 @@ input:placeholder-shown + label {
 }
 .popular img {
   border-radius: 12px;
-  height: 350px;
-  width: 550px;
+  height: 320px;
+  width: 460px;
 }
 
 .para {
@@ -184,16 +184,17 @@ input:placeholder-shown + label {
 
 .book-cover {
   position: relative;
-  margin-left: 45%;
+  /* margin-left: 45%; */
   padding-top: 730px;
 }
 
 .cover-bg {
-  background-image: url("../images/cover2.jpg ");
+  background-image: url("../images/1234.jpg ");
   background-size: cover;
   background-repeat: no-repeat;
   background-origin: border-box;
   height: 100vh;
+  color: #fff;
 }
 
 .story {
@@ -267,7 +268,7 @@ input:placeholder-shown + label {
 }
 
 .fotr {
-  margin-left: 33%;
+  /* margin-left: 33%; */
 }
 
 /* typewriter effect */
